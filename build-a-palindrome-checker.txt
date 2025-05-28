@@ -1,0 +1,112 @@
+** start of index.html **
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palindrome Checker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Palindrome Checker</h1>
+    <div class="input-group">
+      <input type="text" id="text-input" placeholder="Type something..." />
+      <button id="check-btn">Check</button>
+    </div>
+    <p id="result"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+** end of index.html **
+
+** start of script.js **
+
+document.getElementById('check-btn').addEventListener('click', () => {
+  const input = document.getElementById('text-input').value;
+  const resultElement = document.getElementById('result');
+
+  if (input.trim() === '') {
+    alert('Please input a value');
+    return;
+  }
+
+  const originalText = input;
+  const normalized = input
+    .toLowerCase()
+    .replace(/[^a-z0-9]/gi, '');
+
+  const reversed = [...normalized].reverse().join('');
+
+  const isPalindrome = normalized === reversed;
+
+  resultElement.textContent = isPalindrome
+    ? `${originalText} is a palindrome.`
+    : `${originalText} is not a palindrome.`;
+});
+
+
+** end of script.js **
+
+** start of styles.css **
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfdfd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+
+** end of styles.css **
+
